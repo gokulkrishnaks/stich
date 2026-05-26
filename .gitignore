@@ -1,0 +1,100 @@
+# =========================
+# Build Artifacts
+# =========================
+
+build/
+dist/
+bin/
+out/
+
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.dylib
+*.exe
+*.out
+
+# =========================
+# CMake / Make
+# =========================
+
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+install_manifest.txt
+
+# =========================
+# Logs
+# =========================
+
+*.log
+logs/
+
+# =========================
+# Runtime / Temporary Files
+# =========================
+
+tmp/
+temp/
+.cache/
+*.tmp
+*.pid
+*.lock
+
+# =========================
+# Editor / IDE
+# =========================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.orig
+
+# =========================
+# OS Files
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# Test / Coverage
+# =========================
+
+coverage/
+*.gcda
+*.gcno
+*.gcov
+
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+*.key
+*.pem
+*.crt
+secrets/
+
+# =========================
+# Package / Archive Files
+# =========================
+
+*.tar
+*.gz
+*.zip
+*.7z
+
+# =========================
+# Miscellaneous
+# =========================
+
+*.db
+*.sqlite
+*.sqlite3
