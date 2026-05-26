@@ -7,6 +7,8 @@ void stich_config_load_defaults(stich_runtime_config_t *config) {
         return;
     }
 
+    /* These defaults give the runtime a stable identity and topic path without
+     * introducing configuration-file parsing in the first public push. */
     strncpy(config->runtime_id, "stich-edge-dev", sizeof(config->runtime_id) - 1U);
     config->runtime_id[sizeof(config->runtime_id) - 1U] = '\0';
 

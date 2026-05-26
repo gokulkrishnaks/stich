@@ -17,6 +17,8 @@ int stich_runtime_start(void) {
     stich_adapter_t mqtt_adapter;
     char startup_message[STICH_MAX_MESSAGE_LENGTH];
 
+    /* Startup follows the same order the real runtime would need: logging
+     * first, configuration next, then adapters and event processing. */
     stich_logger_init();
     stich_config_load_defaults(&config);
     stich_metrics_init(&metrics);
@@ -32,12 +34,16 @@ int stich_runtime_start(void) {
              config.mqtt_topic);
     stich_log(STICH_LOG_INFO, "runtime", startup_message);
 
+    /* The PoC injects a sample payload instead of reading from a live broker so
+     * the full runtime path remains easy to build and test locally. */
     return stich_event_loop_run(registry.primary_adapter, &metrics, config.mqtt_topic, "24.7");
 }
 
 int main(void) {
     int result;
 
+    /* Keep `main` intentionally tiny so the reusable startup path remains in
+     * `stich_runtime_start` for tests and future embedding. */
     result = stich_runtime_start();
     if (result != 0) {
         fprintf(stderr, "STICH runtime failed to start\n");

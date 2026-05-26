@@ -14,6 +14,8 @@ void stich_timestamp_now(char *buffer, size_t buffer_size) {
     now = time(NULL);
     time_info = localtime(&now);
     if (time_info == NULL) {
+        /* Fall back to a deterministic placeholder rather than returning an
+         * uninitialized timestamp string. */
         snprintf(buffer, buffer_size, "1970-01-01T00:00:00+0000");
         return;
     }

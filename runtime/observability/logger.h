@@ -1,6 +1,8 @@
 #ifndef STICH_RUNTIME_OBSERVABILITY_LOGGER_H
 #define STICH_RUNTIME_OBSERVABILITY_LOGGER_H
 
+/* Log levels are intentionally small and stable so scripts can grep them
+ * easily during the PoC phase. */
 typedef enum stich_log_level {
     STICH_LOG_DEBUG = 0,
     STICH_LOG_INFO = 1,
@@ -9,6 +11,7 @@ typedef enum stich_log_level {
 } stich_log_level_t;
 
 void stich_logger_init(void);
+/* Emits one structured log line with a timestamp and component label. */
 void stich_log(stich_log_level_t level, const char *component, const char *message);
 
 #endif

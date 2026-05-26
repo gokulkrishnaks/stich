@@ -9,6 +9,8 @@ int stich_router_route(const stich_event_t *event, stich_metrics_t *metrics) {
         return -1;
     }
 
+    /* Serializing before logging gives us one stable textual representation of
+     * an event that can later be reused by tests or other sinks. */
     stich_event_serialize(event, serialized_event, sizeof(serialized_event));
     stich_log(STICH_LOG_INFO, "router", serialized_event);
     stich_metrics_record_route(metrics);

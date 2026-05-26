@@ -13,6 +13,8 @@ int stich_mqtt_parse_payload(const char *payload, stich_telemetry_event_t *telem
     strncpy(telemetry_event->value, payload, sizeof(telemetry_event->value) - 1U);
     telemetry_event->value[sizeof(telemetry_event->value) - 1U] = '\0';
 
+    /* Mark the unit as "raw" so downstream code can tell this value has not
+     * yet been normalized into a domain-specific unit. */
     strncpy(telemetry_event->unit, "raw", sizeof(telemetry_event->unit) - 1U);
     telemetry_event->unit[sizeof(telemetry_event->unit) - 1U] = '\0';
 

@@ -24,6 +24,8 @@ int stich_event_loop_run(
         return -1;
     }
 
+    /* Once the adapter has produced a canonical event, the runtime can start
+     * tracking it without needing to know anything about MQTT. */
     stich_metrics_record_ingest(metrics);
     return stich_router_route(&event, metrics);
 }

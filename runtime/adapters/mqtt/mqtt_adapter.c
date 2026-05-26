@@ -19,6 +19,8 @@ static int stich_mqtt_adapter_ingest(
         return -1;
     }
 
+    /* Start from a fully zeroed event so every field has a predictable default
+     * value before the adapter fills in protocol-derived data. */
     memset(event, 0, sizeof(*event));
     event->kind = STICH_EVENT_TELEMETRY;
 
@@ -48,6 +50,8 @@ static int stich_mqtt_adapter_dispatch(stich_adapter_t *adapter, const stich_eve
         return -1;
     }
 
+    /* The dispatch path is still a placeholder, but we count calls so command
+     * routing can be observed once outbound flow is added. */
     context = (stich_mqtt_adapter_context_t *)adapter->context;
     context->published_commands += 1U;
 
@@ -65,6 +69,8 @@ void stich_mqtt_adapter_init(stich_adapter_t *adapter, stich_mqtt_adapter_contex
         return;
     }
 
+    /* Register the MQTT implementation behind the shared adapter contract so
+     * the runtime can stay transport-agnostic. */
     context->published_commands = 0U;
     adapter->name = "mqtt-adapter";
     adapter->ingest = stich_mqtt_adapter_ingest;

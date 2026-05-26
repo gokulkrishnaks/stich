@@ -20,6 +20,9 @@ int stich_event_serialize(const stich_event_t *event, char *buffer, size_t buffe
         return -1;
     }
 
+    /* The serializer keeps the output intentionally compact because it is
+     * currently used as a human-readable runtime trace rather than as a formal
+     * wire format. */
     switch (event->kind) {
         case STICH_EVENT_TELEMETRY:
             return snprintf(

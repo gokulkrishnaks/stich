@@ -3,6 +3,8 @@
 
 #include "runtime/events/event_types.h"
 
+/* Adapters form the boundary between protocol-specific I/O and the canonical
+ * runtime event model. */
 typedef struct stich_adapter {
     const char *name;
     int (*ingest)(struct stich_adapter *adapter, const char *topic, const char *payload, stich_event_t *event);
