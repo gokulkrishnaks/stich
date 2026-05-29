@@ -1,7 +1,7 @@
 # STICH v0 - PoC
 ## Secure Thread Integration & Canonical Communication Hub
 
-STICH is an experimental edge-native runtime designed for coordinating heterogeneous systems through canonical operational communication. This is a Proof of Concept version
+STICH is an experimental edge-native runtime designed for coordinating heterogeneous systems through canonical operational communication. This is a Proof of Concept version.
 
 The project focuses on:
 - protocol abstraction
